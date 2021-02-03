@@ -1,0 +1,75 @@
+{% extends "base_nav.html" %}
+
+{% block content %}
+    <div class="table-responsive col-sm-10 col-sm-offset-1">
+        <h2 class="sub-header">现有厂商</h2>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>公司名称</th>
+                <th>联系方式</th>
+                <th></th>
+                </tr>
+            </thead>
+            {% for company in companyList %}
+            <tbody>
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ company['ename'] }}</td>
+                <td>{{ company['econtact'] }}</td>
+                <td><a>修改</a></td>
+                <td><a href="#">删除</a></td>
+            </tr>
+            </tbody>
+            {% endfor %}
+        </table>
+    </div>
+
+    <div class="table-responsive col-sm-10 col-sm-offset-1">
+        <h2 class="sub-header">添加厂商</h2>
+        <div class="input-group">
+            <form action="{{ url_for('task.createcompany') }}" method="POST">
+                <input type="text" class="form-control" placeholder="厂商名称" name="ename" aria-describedby="basic-addon1">
+                <input type="text" class="form-control" placeholder="厂商联系方式" name="econtact" aria-describedby="basic-addon1">
+                <button class="btn btn-lg btn-primary btn-block" type="submit">新建厂商</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="table-responsive col-sm-10 col-sm-offset-1">
+        <h2 class="sub-header">添加任务</h2>
+        <div class="input-group">
+            <div class="dropdown">
+                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">请选择公司<span class="caret"></span></button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+{#                        {% for company in companyList %}#}
+{#                        <li>{{ loop.index }}</li>#}
+{##}
+{#                        {% endfor %}#}
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">嗷嗷</a></li>
+                        <li><a href="#">随手</a></li>
+                    </ul>
+                </div>
+            <form action="{{ url_for('task.createcompany') }}" method="POST">
+{#                <input id="companylist" type="text" list="typelist" placeholder="请选择" name="ename">#}
+{#                    <datalist id="companylist">#}
+{#                        {% for company in companyList %}#}
+{#                        <option>{{ company['ename'] }}</option>#}
+{#                        {% endfor %}#}
+{#                    </datalist>#}
+
+
+
+
+
+
+                <input type="text" class="form-control" placeholder="循环周期" name="mcycle" aria-describedby="basic-addon1">
+                <input type="text" class="form-control" placeholder="任务名称" name="mname" aria-describedby="basic-addon1">
+                <button class="btn btn-lg btn-primary btn-block" type="submit">新建厂商</button>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}
